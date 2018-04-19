@@ -1,0 +1,33 @@
+spring:
+   freemarker:
+      cache: false
+      request-context-attribute: request
+   datasource:
+      msbeehiveUtil:
+            name: icp
+            driverClassName: oracle.jdbc.driver.OracleDriver
+            url: jdbc:oracle:thin:@(DESCRIPTION=(FAILOVER = yes)(ADDRESS = (PROTOCOL = TCP)(HOST =icp-wm.db.jishu.idc)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST =icp-ws.db.jishu.idc)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = icp)))
+            username: icp
+            password:
+            initialSize: 5
+            maxActive: 100
+            maxWait: 60000
+            maxIdle: 20
+            poolPreparedStatements: true
+            validationQuery: SELECT 1 FROM dual
+            testOnBorrow: true
+            testOnReturn: true
+            testWhileIdle: true
+            minEvictableIdleTimeMillis: 1800000
+            timeBetweenEvictionRunsMillis: 900000
+endpoints:
+    shutdown:
+        enabled: false
+
+logging:
+     level:
+        com:
+          didispace: INFO
+
+server:
+     port: 8080

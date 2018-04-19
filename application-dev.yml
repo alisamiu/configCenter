@@ -1,0 +1,33 @@
+spring:
+   freemarker:
+      cache: false
+      request-context-attribute: request
+   datasource:
+      msbeehiveUtil:
+            name:
+            driverClassName: oracle.jdbc.driver.OracleDriver
+            url:
+            username:
+            password:
+            initialSize: 5
+            maxActive: 100
+            maxWait: 60000
+            maxIdle: 20
+            poolPreparedStatements: true
+            validationQuery: SELECT 1 FROM dual
+            testOnBorrow: true
+            testOnReturn: true
+            testWhileIdle: true
+            minEvictableIdleTimeMillis: 1800000
+            timeBetweenEvictionRunsMillis: 900000
+endpoints:
+    shutdown:
+        enabled: false
+
+logging:
+     level:
+        com:
+          didispace: DEBUG
+
+server:
+     port: 8080

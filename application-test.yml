@@ -1,0 +1,41 @@
+spring:
+   freemarker:
+      cache: false
+      request-context-attribute: request
+   datasource:
+        msbeehiveUtil:
+            name: ICP1222
+            driverClassName: oracle.jdbc.driver.OracleDriver
+            url: jdbc:oracle:thin:@(description=(address_list= (address=(host=10.143.224.12) (protocol=tcp)(port=1521))(address=(host=10.143.224.14)(protocol=tcp) (port=1521)) (failover=yes))(connect_data=(service_name=cedb )))
+            username: 
+            password: 
+            initialSize: 5
+            maxActive: 100
+            maxWait: 60000
+            maxIdle: 20
+            poolPreparedStatements: true
+            validationQuery: SELECT 1 FROM dual
+            testOnBorrow: true
+            testOnReturn: true
+            testWhileIdle: true
+            minEvictableIdleTimeMillis: 1800000
+            timeBetweenEvictionRunsMillis: 900000
+            filters: stat,wall,log4j
+            connectionProperties: druid.stat.mergeSql=true
+            WebStatFilter:
+                  enabled: true #是否启用StatFilter默认值true
+                  exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+                  StatViewServlet:
+                  enabled: true # 是否启用StatViewServlet默认值true
+                  urlPattern: /druid/*
+endpoints:
+    shutdown:
+        enabled: false
+
+logging:
+     level:
+        com:
+          didispace: DEBUG
+
+server:
+     port: 8080
